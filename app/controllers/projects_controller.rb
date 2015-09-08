@@ -15,7 +15,9 @@ class ProjectsController < ApplicationController
       # redirect_to @project, flash: { success: "Project has been created." }
       # redirect_to @project, success: "Project has been created." }
     else
-      # TODO
+      flash.now[:alert] = "Project has not been created."
+      # current page load
+      render "new"
     end
   end
 
