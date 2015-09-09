@@ -10,3 +10,12 @@
 </header>
 
 <p><%= @project.description %></p>
+
+<header>
+  <h1>Tickets</h1>
+
+  <ul class="actions">
+    <li><%= link_to "New Ticket", new_project_ticket_path(@project), class: "new" %></li>
+  </ul>
+</header>
+
