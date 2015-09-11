@@ -13,4 +13,14 @@ class User < ActiveRecord::Base
   def to_s
     "#{email} (#{admin? ? "Admin" : "User"})"
   end
+
+  # Override devise method to prevent login to archived users
+  def active_for_authentication?
+    super && archived_at.nil?
+  end
+
+  # Override devise method to provide error message when authentication fails due to an innactive user
+  def inactive_message
+    archived_at.nil? ? super : :archived
+  end
 end
