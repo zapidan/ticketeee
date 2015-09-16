@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :roles
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -22,5 +24,9 @@ class User < ActiveRecord::Base
   # Override devise method to provide error message when authentication fails due to an innactive user
   def inactive_message
     archived_at.nil? ? super : :archived
+  end
+
+  def role_on(project)
+    roles.find_by(project_id: project).try(:name)
   end
 end
