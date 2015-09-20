@@ -65,4 +65,11 @@ RSpec.feature "Users can comment on tickets" do
       expect(page).to have_content "bug"
     end
   end
+
+  scenario "but cannot add a tag without permissions" do
+    assign_role!(user, :editor, project)
+    visit project_ticket_path(project, ticket)
+
+    expect(page).not_to have_field "Tags"
+  end
 end

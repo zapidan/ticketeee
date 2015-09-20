@@ -3,13 +3,13 @@ require "rails_helper"
 RSpec.feature "Users can create new tickets" do
   let!(:state) { FactoryGirl.create :state, name: "New", default: true }
   let(:user) { FactoryGirl.create(:user) }
+  let(:project) { FactoryGirl.create(:project, name: "Internet Explorer") }
+
   
   before do
     login_as(user)
     
-    project = FactoryGirl.create(:project, name: "Internet Explorer")
-
-    assign_role!(user, :editor, project)
+    assign_role!(user, :manager, project)
 
     visit project_path(project)
     click_link "New Ticket"
@@ -87,5 +87,13 @@ RSpec.feature "Users can create new tickets" do
       expect(page).to have_content "browser"
       expect(page).to have_content "visual"
     end
+  end
+
+  scenario "but cannot add tags if they don't have the permissions" do
+    assign_role!(user, :editor, project)
+    # Refresh page
+    visit current_path
+
+    expect(page).not_to have_field "Tags"
   end
 end
