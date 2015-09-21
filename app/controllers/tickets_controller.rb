@@ -58,6 +58,17 @@ class TicketsController < ApplicationController
     redirect_to @project, notice: "Ticket has been deleted."
   end
 
+  def search
+    authorize @project, :show?
+    if params[:search].present?
+      @tickets = @project.tickets.search(params[:search])
+    else
+      @tickets = @project.tickets
+    end
+
+    render "projects/show"
+  end
+
   private
 
     def set_project

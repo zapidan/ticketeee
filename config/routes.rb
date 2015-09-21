@@ -53,7 +53,11 @@ Rails.application.routes.draw do
   #     resource :seller
   #   end
   resources :projects, only: [:index, :show, :edit, :update] do
-    resources :tickets
+    resources :tickets do
+      collection do
+        get :search
+      end
+    end
   end
 
   resources :tickets, only: [] do
