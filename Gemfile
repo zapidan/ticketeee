@@ -33,6 +33,7 @@ gem "fog", "~> 1.29.0"
 gem "rails_12factor", group: :production
 # Use puma server in production
 gem "puma", group: :production
+gem "active_model_serializers", "~> 0.9.3"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
