@@ -18,6 +18,12 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    scope path: "/projects/:project_id", as: "project" do
+      resources :tickets
+    end
+  end
+
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
