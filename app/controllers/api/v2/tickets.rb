@@ -32,9 +32,7 @@ module API
         def set_user
           if env["HTTP_AUTHORIZATION"].present?
             auth_token = /Token token=(.*)/.match(env["HTTP_AUTHORIZATION"])[1]
-            pp auth_token
             @user = User.find_by(api_key: auth_token)
-            pp @user
             return @user if @user.present?
           end
 
