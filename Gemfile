@@ -35,6 +35,7 @@ gem "rails_12factor", group: :production
 gem "puma", group: :production
 gem "active_model_serializers", "~> 0.9.3"
 gem "sinatra"
+gem "figaro", group: :development
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
