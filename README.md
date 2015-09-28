@@ -1,7 +1,7 @@
 # Ticketee
 [![Build Status](https://travis-ci.org/zapidan/ticketeee.svg?branch=master)](https://travis-ci.org/zapidan/ticketeee)
 
-Ticket management website built using TDD (RSPec + Capybara). This has been built following [Rails 4 in Action](https://www.manning.com/books/rails-4-in-action) book. Some of the features include:
+Ticket management website built using TDD (RSpec + Capybara). This has been built following [Rails 4 in Action](https://www.manning.com/books/rails-4-in-action) book. Some of the features include:
 
 - CRUD operations on tickets belonging to particular projects. File uploading with [CarrierWave](https://github.com/carrierwaveuploader/carrierwave)
 - Authentication using [Devise](https://github.com/plataformatec/devise)
@@ -28,7 +28,7 @@ Clone repo:
 Install gems:
 
   ```ruby
-  bundle install
+  bundle install --without production
   ```
 
 Install figaro (needed to create ENV variables to create the admin user from the seeds.rb):
